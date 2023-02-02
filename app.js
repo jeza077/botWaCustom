@@ -52,9 +52,19 @@ const MockAdapter = require('@bot-whatsapp/database/mock')
 
 
 
-const flowPrincipal = addKeyword(['hola', 'ole', 'alo'])
-    .addAnswer('🙌 Hola bienvenido a este *Chatbot*')
+const flowPrincipal = addKeyword(['hola', 'buenas', 'buen dia'])
+    .addAnswer('Hola 😁, soy tu asistente virtual. \n\n\n'+
+    'Dime cómo te puedo ayudar:\n\n'+
+    '1⃣ Hacer un *pedido a domicilio* 🛵\n'+
+    '2⃣ Hacer alguna *sugerencia* 📨\n\n\n'+
+    'Escribe el numero de opcion que desees. 😃', {
 
+    }, null, [flowPedido])
+
+
+
+const flowPedido = addKeyword(['1', 'uno'])
+    .addAnswer('Por favor, compárteme unicamente tu *primer nombre.* (Ej: Maria)')
 
 const main = async () => {
     // const adapterDB = new MySQLAdapter({
