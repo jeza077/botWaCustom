@@ -6,15 +6,17 @@ const {
 } = require('@bot-whatsapp/bot')
 
 const MetaProvider = require('@bot-whatsapp/provider/meta')
-const MySQLAdapter = require('@bot-whatsapp/database/mysql')
+// const MySQLAdapter = require('@bot-whatsapp/database/mysql')
+const MockAdapter = require('@bot-whatsapp/database/mock')
+
 
 /**
  * Declaramos las conexiones de MySQL
  */
-const MYSQL_DB_HOST = 'localhost'
-const MYSQL_DB_USER = 'root'
-const MYSQL_DB_PASSWORD = ''
-const MYSQL_DB_NAME = 'bot'
+// const MYSQL_DB_HOST = 'localhost'
+// const MYSQL_DB_USER = 'root'
+// const MYSQL_DB_PASSWORD = ''
+// const MYSQL_DB_NAME = 'bot'
 
 /**
  * Aqui declaramos los flujos hijos, los flujos se declaran de atras para adelante, es decir que si tienes un flujo de este tipo:
@@ -55,12 +57,13 @@ const flowPrincipal = addKeyword(['hola', 'ole', 'alo'])
 
 
 const main = async () => {
-    const adapterDB = new MySQLAdapter({
-        host: MYSQL_DB_HOST,
-        user: MYSQL_DB_USER,
-        database: MYSQL_DB_NAME,
-        password: MYSQL_DB_PASSWORD,
-    })
+    // const adapterDB = new MySQLAdapter({
+    //     host: MYSQL_DB_HOST,
+    //     user: MYSQL_DB_USER,
+    //     database: MYSQL_DB_NAME,
+    //     password: MYSQL_DB_PASSWORD,
+    // })
+    const adapterDB = new MockAdapter()
     const adapterFlow = createFlow([flowPrincipal])
 
     const adapterProvider = createProvider(MetaProvider, {
