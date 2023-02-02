@@ -51,6 +51,7 @@ const JsonAdapter = require('@bot-whatsapp/database/json')
 // )
 
 let nombre = '';
+let apellido = '';
 let numero = '';
 
 const flowPedido = addKeyword(['1', 'uno'])
@@ -60,7 +61,26 @@ const flowPedido = addKeyword(['1', 'uno'])
         console.log('nombreVariable: ', nombre);
         console.log('numeroVariable: ', numero);
 
-        if(!ctx.body.includes('@')) return fallBack();
+        if(ctx.body != ''){
+            addAnswer('Por favor, compárteme unicamente tu *primer apellido.* (Ej: Avelar)', {capture:true},(ctx) =>{
+                apellido = ctx.body;
+
+                console.log('nombreVariable: ', nombre);
+                console.log('apellidoVariable: ', apellido);
+                console.log('numeroVariable: ', numero);
+            })
+
+            if(apellido != ''){
+                console.log('todo bien hasta aqui')
+            } else {
+                console.log('todo mal en apellido')
+            }
+                
+        } else {
+            return fallBack();
+            // if(!ctx.body.includes('@')) return fallBack();
+        }
+
     })
 
 
