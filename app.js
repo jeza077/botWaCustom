@@ -52,7 +52,7 @@ const JsonAdapter = require('@bot-whatsapp/database/json')
 
 const flowPedido = addKeyword(['1', 'uno'])
     .addAnswer('Por favor, compárteme unicamente tu *primer nombre.* (Ej: Maria)', {capture:true},(ctx) =>{
-        console.log('nombre: ', ctx.body);
+        console.log('nombre: ', ctx);
     })
 
 
