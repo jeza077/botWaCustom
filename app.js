@@ -49,7 +49,8 @@ const MockAdapter = require('@bot-whatsapp/database/mock')
 //     [flowSecundario]
 // )
 
-
+const flowPedido = addKeyword(['1', 'uno'])
+    .addAnswer('Por favor, compárteme unicamente tu *primer nombre.* (Ej: Maria)')
 
 
 const flowPrincipal = addKeyword(['hola', 'buenas', 'buen dia'])
@@ -63,8 +64,7 @@ const flowPrincipal = addKeyword(['hola', 'buenas', 'buen dia'])
 
 
 
-const flowPedido = addKeyword(['1', 'uno'])
-    .addAnswer('Por favor, compárteme unicamente tu *primer nombre.* (Ej: Maria)')
+
 
 const main = async () => {
     // const adapterDB = new MySQLAdapter({
