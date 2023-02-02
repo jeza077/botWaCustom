@@ -54,7 +54,8 @@ let nombre = '';
 let apellido = '';
 let numero = '';
 
-const flowPedido = addKeyword(['1', 'uno'])
+
+const flowNombre = addKeyword(['1', 'uno'])
     .addAnswer('Por favor, compárteme unicamente tu *primer nombre.* (Ej: Maria)', {capture:true},(ctx, {fallBack}) =>{
         nombre = ctx.body;
         numero = ctx.from
@@ -62,23 +63,16 @@ const flowPedido = addKeyword(['1', 'uno'])
         console.log('numeroVariable: ', numero);
 
         if(ctx.body != ''){
-            addAnswer('Por favor, compárteme unicamente tu *primer apellido.* (Ej: Avelar)', {capture:true},(ctx) =>{
-                apellido = ctx.body;
+            return fallBack();  
+        }
 
-                console.log('nombreVariable: ', nombre);
-                console.log('apellidoVariable: ', apellido);
-                console.log('numeroVariable: ', numero);
-            })
+    })
+    .addAnswer('Por favor, compárteme unicamente tu *primer apellido.* (Ej: AVelar)', {capture:true},(ctx, {fallBack}) =>{
+        apellido = ctx.body;
+        console.log('apellidoVariable: ', apellido);
 
-            if(apellido != ''){
-                console.log('todo bien hasta aqui')
-            } else {
-                console.log('todo mal en apellido')
-            }
-                
-        } else {
-            return fallBack();
-            // if(!ctx.body.includes('@')) return fallBack();
+        if(apellido != ''){
+            return fallBack();  
         }
 
     })
@@ -91,7 +85,7 @@ const flowPrincipal = addKeyword(['hola', 'buenas', 'buen dia'])
     '2⃣ Hacer alguna *sugerencia* 📨\n\n\n'+
     'Escribe el numero de opcion que desees. 😃', {
 
-    }, null, [flowPedido])
+    }, null, [flowNombre])
 
 
 
