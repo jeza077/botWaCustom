@@ -50,9 +50,15 @@ const JsonAdapter = require('@bot-whatsapp/database/json')
 //     [flowSecundario]
 // )
 
+let nombre = '';
+let numero = '';
+
 const flowPedido = addKeyword(['1', 'uno'])
     .addAnswer('Por favor, compárteme unicamente tu *primer nombre.* (Ej: Maria)', {capture:true},(ctx) =>{
-        console.log('nombre: ', ctx);
+        nombre = ctx.body;
+        numero = ctx.from
+        console.log('nombreVariable: ', nombre);
+        console.log('numeroVariable: ', numero);
     })
 
 
