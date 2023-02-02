@@ -62,7 +62,7 @@ const flowNombre = addKeyword(['1', 'uno'])
         console.log('nombreVariable: ', nombre);
         console.log('numeroVariable: ', numero);
 
-        if(ctx.body != ''){
+        if(ctx.body == ''){
             return fallBack();  
         }
 
@@ -71,7 +71,7 @@ const flowNombre = addKeyword(['1', 'uno'])
         apellido = ctx.body;
         console.log('apellidoVariable: ', apellido);
 
-        if(apellido != ''){
+        if(apellido == ''){
             return fallBack();  
         }
 
